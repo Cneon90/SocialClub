@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    container_name: socialClub
     networks:
       - app-network
     ports:
@@ -17,10 +18,14 @@ services:
   frontend:
     build:
       context: ./frontend/
+    container_name: vue
     networks:
       - app-network
     ports:
-      - "8080:8080"
+      - "8080:80"
+#    volumes:
+#      - ./frontend:/app
+#      - /app/node_modules   # Указываем путь внутри контейнера для node_modules
 
   db:
     image: postgres
@@ -33,9 +38,9 @@ services:
       - POSTGRES_PASSWORD=db_password
       - POSTGRES_DB=db_name
 
-
   nginx:
     image: nginx
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
@@ -45,6 +50,8 @@ services:
     depends_on:
       - backend
       - frontend
+
+
 
 networks:
   app-network:
