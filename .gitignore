@@ -1,0 +1,31 @@
+# Virtual environment
+venv/
+.env
+
+# Compiled Python files
+*.pyc
+
+# Log files
+*.log
+
+# Database
+db.sqlite3
+
+# Static files
+/static/
+
+# Media files
+/media/
+
+# Configuration file
+*.ini
+
+# Dependency directories
+/node_modules/
+/bower_components/
+
+__pycache__/
+social_api/__pycache__/serializers.cpython-39.pyc
+
+.idea\
+
